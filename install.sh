@@ -551,8 +551,9 @@ ohai "Downloading and installing Homebrew..."
   execute "git" "init" "-q"
 
   # "git remote add" will fail if the remote is defined in the global config
-  execute "git" "config" "remote.origin.url" "${BREW_REPO}"
-  execute "git" "config" "remote.origin.fetch" "+refs/heads/*:refs/remotes/origin/*"
+  #execute "git" "config" "remote.origin.url" "${BREW_REPO}"
+  #execute "git" "config" "remote.origin.fetch" "+refs/heads/*:refs/remotes/origin/*"
+execute "git" "remote" "add" "origin" "${BREW_REPO}"
  
   echo "JD START"
 	execute "git" "remote" "-v"
