@@ -575,9 +575,9 @@ execute "${HOMEBREW_PREFIX}/bin/brew" "uninstall" "openssl@1.0.2t"
 execute "${HOMEBREW_PREFIX}/bin/brew" "uninstall" "python@2.7.17"
 execute "${HOMEBREW_PREFIX}/bin/brew" "untap" "local/openssl"
 execute "${HOMEBREW_PREFIX}/bin/brew" "untap" "local/python2"
-execute "${HOMEBREW_PREFIX}/bin/brew" "cask" "install xquartz"
+# execute "${HOMEBREW_PREFIX}/bin/brew" "cask" "install xquartz"
 execute "${HOMEBREW_PREFIX}/bin/brew" "update" "--force"
-execute "${HOMEBREW_PREFIX}/bin/brew" "upgrade"
+# execute "${HOMEBREW_PREFIX}/bin/brew" "upgrade"
 # brew install ace boost cmake eigen gsl ipopt jpeg libedit opencv pkg-config qt5 sqlite swig tinyxml
 
   # execute "${HOMEBREW_PREFIX}/bin/brew" "update" "--force"
