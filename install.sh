@@ -574,6 +574,9 @@ ohai "Downloading and installing Homebrew..."
 
   execute "ln" "-sf" "${HOMEBREW_REPOSITORY}/bin/brew" "${HOMEBREW_PREFIX}/bin/brew"
 
+  echo "JD HERE"
+  execute "${HOMEBREW_PREFIX}/bin/brew" "doctor"
+
   execute "${HOMEBREW_PREFIX}/bin/brew" "update" "--force"
 ) || exit 1
 
