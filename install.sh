@@ -556,7 +556,7 @@ ohai "Downloading and installing Homebrew..."
  
   echo "JD START"
 	execute "git" "remote" "-v"
-
+  cat .git/config
   echo "JD END"
 	
 
