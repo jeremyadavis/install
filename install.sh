@@ -550,16 +550,19 @@ ohai "Downloading and installing Homebrew..."
   # we do it in four steps to avoid merge errors when reinstalling
   execute "git" "init" "-q"
 
-  # "git remote add" will fail if the remote is defined in the global config
-  #execute "git" "config" "remote.origin.url" "${BREW_REPO}"
-  #execute "git" "config" "remote.origin.fetch" "+refs/heads/*:refs/remotes/origin/*"
-#execute "git" "remote" "add" "origin" "${BREW_REPO}"
- 
-  echo "JD START"
+ echo "JD STARTX"
 	execute "git" "remote" "-v"
   cat .git/config
   echo "JD END"
-	
+
+
+  # "git remote add" will fail if the remote is defined in the global config
+  execute "git" "config" "remote.origin.url" "${BREW_REPO}"
+  execute "git" "config" "remote.origin.fetch" "+refs/heads/*:refs/remotes/origin/*"
+
+ 
+# execute "git" "remote" "add" "origin" "${BREW_REPO}"
+ 	
 
   # ensure we don't munge line endings on checkout
   execute "git" "config" "core.autocrlf" "false"
