@@ -550,12 +550,6 @@ ohai "Downloading and installing Homebrew..."
   # we do it in four steps to avoid merge errors when reinstalling
   execute "git" "init" "-q"
 
- echo "JD STARTX"
-	execute "git" "remote" "-v"
-  cat .git/config
-  echo "JD END"
-
-
   # "git remote add" will fail if the remote is defined in the global config
   execute "git" "config" "remote.origin.url" "${BREW_REPO}"
   execute "git" "config" "remote.origin.fetch" "+refs/heads/*:refs/remotes/origin/*"
@@ -575,9 +569,18 @@ ohai "Downloading and installing Homebrew..."
   execute "ln" "-sf" "${HOMEBREW_REPOSITORY}/bin/brew" "${HOMEBREW_PREFIX}/bin/brew"
 
   echo "JD HERE"
-  execute "${HOMEBREW_PREFIX}/bin/brew" "doctor"
+  # execute "${HOMEBREW_PREFIX}/bin/brew" "doctor"
 
-  execute "${HOMEBREW_PREFIX}/bin/brew" "update" "--force"
+execute "${HOMEBREW_PREFIX}/bin/brew" "uninstall" "openssl@1.0.2t"
+execute "${HOMEBREW_PREFIX}/bin/brew" "uninstall" "python@2.7.17"
+execute "${HOMEBREW_PREFIX}/bin/brew" "untap" "local/openssl"
+execute "${HOMEBREW_PREFIX}/bin/brew" "untap" "local/python2"
+execute "${HOMEBREW_PREFIX}/bin/brew" "cask" "install xquartz"
+execute "${HOMEBREW_PREFIX}/bin/brew" "update" "--force"
+execute "${HOMEBREW_PREFIX}/bin/brew" "upgrade"
+# brew install ace boost cmake eigen gsl ipopt jpeg libedit opencv pkg-config qt5 sqlite swig tinyxml
+
+  # execute "${HOMEBREW_PREFIX}/bin/brew" "update" "--force"
 ) || exit 1
 
 if [[ ":${PATH}:" != *":${HOMEBREW_PREFIX}/bin:"* ]]; then
